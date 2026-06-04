@@ -7,5 +7,6 @@ resource "helm_release" "monitoring" {
     values = [
         file("${path.module}/values.yaml")
     ]
-    timeout = 1200
+    timeout = 300
+    version = "84.1.2"
 }
