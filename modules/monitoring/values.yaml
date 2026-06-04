@@ -34,3 +34,25 @@ alertmanager:
           resources:
             requests:
               storage: 20Gi
+
+
+grafana:
+  datasources:
+     datasources.yaml:
+        apiVersion: 1
+        datasources:
+        - name: Prometheus-operated
+          type: prometheus
+          url: http://prometheus-operated.monitoring.svc.cluster.local:9090
+          access: proxy
+          isDefault: true
+          jsonData:
+            httpMethod: GET
+  persistence:
+    enabled: true
+    storageClassName: standard-rwo
+    size: 10Gi  
+  service:
+    type: LoadBalancer
+    annotations:
+      networking.gke.io/load-balancer-type: "Internal"
