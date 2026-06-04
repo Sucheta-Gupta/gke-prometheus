@@ -20,3 +20,7 @@ module "gke" {
   gcp_public_cidrs_access_enabled      = var.gcp_public_cidrs_access_enabled
   private_endpoint_enforcement_enabled = var.private_endpoint_enforcement_enabled
 }
+
+module "monitoring" {
+  source = "../../modules/monitoring"
+}
